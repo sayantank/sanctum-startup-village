@@ -1,0 +1,31 @@
+{
+	"name": "startup-village",
+	"type": "module",
+	"version": "1.0.0",
+	"description": "Hello World Node.js with TypeScript",
+	"main": "dist/index.js",
+	"scripts": {
+		"build": "tsc",
+		"start": "node dist/index.js",
+		"dev": "node --loader ts-node/esm src/index.ts",
+		"run:1": "node --loader ts-node/esm src/1-getTipInstructions.ts",
+		"run:2": "node --loader ts-node/esm src/2-buildGatewayTransaction.ts"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"@solana-program/compute-budget": "^0.8.0",
+		"@solana-program/system": "^0.7.0",
+		"@solana/kit": "^2.3.0",
+		"@solana/promises": "^2.3.0",
+		"@solana/transaction-confirmation": "^2.3.0",
+		"dotenv": "^16.4.5"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.1.2",
+		"@types/node": "^24.1.0",
+		"ts-node": "^10.9.2",
+		"typescript": "^5.8.3"
+	}
+}
