@@ -11,7 +11,7 @@ export const NULL_LATEST_BLOCKHASH = {
 	blockhash: blockhash("11111111111111111111111111111111"),
 	lastValidBlockHeight: 1000n,
 };
-export const GATEWAY_ENDPOINT = `https://dev-tpg.ironforge.network/v1/mainnet?apiKey=${process.env.GATEWAY_API_KEY}`;
+export const GATEWAY_ENDPOINT = `https://tpg.sanctum.so/v1/mainnet?apiKey=${process.env.GATEWAY_API_KEY}`;
 
 export async function getAccounts() {
 	const alicePrivateKey = process.env.ALICE_PRIVATE_KEY;
