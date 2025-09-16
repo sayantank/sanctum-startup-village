@@ -1,76 +1,40 @@
-# TypeScript Hello World with Docker
+# Gateway Demo - Sanctum Startup Village
 
-A simple TypeScript Hello World application with Docker support.
+An example implementation of how to use the Gateway API to build and send transactions on Solana. 
 
 ## Prerequisites
 
 - Node.js (LTS version recommended)
-- pnpm
-- Docker (for containerization)
+- pnpm (or any packagage manager of your choice)
+- Typescript
 
 ## Environment Variables
 
-Create a `.env` file in the root directory with the following variables:
+Create a `.env` file in the root directory using the `.env.example` file as a template.
 
-```env
-# Application
-APP_NAME=tx-benchmark
-PORT=3000
+## Running the Demo
 
-# Environment
-NODE_ENV=development
+### Using `getTipInstructions`
 
-# Add other environment variables as needed
-API_KEY=your_api_key_here
-DATABASE_URL=your_database_url_here
-```
+The `getTipInstructions` method returns the tip instructions that need to be added to your transaction to ensure it is sent to a specific set of delivery methods.
 
-## Installation
+The chosen delivery methods can be decided by either the **Transaction Routing** parameter on your Dashboard, or by using the `deliveryMethodType` field in the `getTipInstructions` method params.
 
-1. Install dependencies:
 ```bash
-pnpm install
+pnpm run:1
 ```
 
-2. Run in development mode:
+### Using `buildGatewayTransaction`
+
+The `buildGatewayTransaction` method accepts a minimal transaction, and then returns an updated transaction that is ready to be sent to via Gateway.
+
+One can use the `buildGatewayTransaction` method to do the following:
+
+- Simulate the transaction for preflight checks, and get an estimate of the CUs consumed to set the CU limit accordingly.
+- Fetch the latest prioritization fees for the transaction, and set the CU price accordingly.
+- Add the tip instructions to route the trasaction to the desired delivery methods.
+- Set the appropriate `latestBlockhash` for the transaction, depending on whether you want the transaction to expire sooner than usual.
+
 ```bash
-pnpm dev
+pnpm run:2
 ```
-
-3. Build for production:
-```bash
-pnpm build
-```
-
-4. Run in production mode:
-```bash
-pnpm start
-```
-
-## Docker Support
-
-1. Build the Docker image:
-```bash
-docker build -t tx-benchmark .
-```
-
-2. Run the container:
-```bash
-docker run -p 3000:3000 --env-file .env tx-benchmark
-```
-
-## Project Structure
-
-```
-.
-├── src/
-│   └── index.ts
-├── dist/           (generated after build)
-├── Dockerfile
-├── .dockerignore
-├── .env            (create this file locally)
-├── package.json
-├── pnpm-lock.yaml
-├── tsconfig.json
-└── README.md
-``` 
