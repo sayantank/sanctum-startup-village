@@ -1,6 +1,6 @@
 # Gateway Demo - Sanctum Startup Village
 
-An example implementation of how to use the Gateway API to build and send transactions on Solana. 
+An example implementation of how to use the [Gateway](https://gateway.sanctum.so) to build and send transactions on Solana. 
 
 ## Prerequisites
 
